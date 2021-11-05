@@ -1,2 +1,2 @@
-# Pensamiento-computacional-orientado-a-objetos
+#Pensamiento-computacional-orientado-a-objetos
 Proyecto
