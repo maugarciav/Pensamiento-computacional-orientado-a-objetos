@@ -7,4 +7,11 @@ La liga ABE esta organizando un toreno, por lo cual genera un programa para tene
 
 FUNCIONALIDAD
 
+El programa lleva un registro de todas las personas que entran a las intalaciones. (Conforme avance el tiempo, el programa tendra mas funciones por ahora es lo mas básico)
+
 CONSIDERACIONES
+
+El programa corre en la consola y esta hecho con el lenjuage c++ y corre en los IDES que acepten dicho lenguaje.
+
+
+GRACIAS.
