@@ -7,22 +7,27 @@
 
 #ifndef PROYECTO_PERSONAS_H
 #define PROYECTO_PERSONAS_H
-
 #include <string>
+
+
 using namespace std;
+
 
 
 //Primera clase Jugador
 class Jugador{
 
 private:
+//Atributos
     string nombre;
     int id;
 
 public:
-    Jugador(): nombre(""), id(0){};
+//Constructores
+    Jugador(): nombre(""), id(0){}; //Default
     Jugador(string nom, int _id): nombre(nom), id(_id){};
 
+//Metodos
     void confirmacion();
     string get_Nombre();
     int get_Id();
@@ -51,19 +56,23 @@ void Jugador :: confirmacion() {
 
 
 
+
+
+
 //Segunda clase Publico
 class Publico{
 
 private:
+//Atributos
     string nombre;
     int edad;
 
 public:
-
-    Publico(): nombre(""), edad(15){};
+//Constructores
+    Publico(): nombre(""), edad(15){}; //Default (Inizializo en 15 para que por default cobre la entrada)
     Publico(string nom, int _edad): nombre(nom), edad(_edad){};
 
-
+//Metodos
     void precio();
     void confirmacion();
     string get_Nombre();
@@ -90,7 +99,7 @@ void Publico :: confirmacion() {
 }
 
 void Publico ::precio(){
-    if (edad > 15){
+    if (edad > 14){
         cout << "Su entrada tendría un precio de 30 pesos" << endl;
     }
     else{
@@ -104,17 +113,19 @@ void Publico ::precio(){
 
 
 // Tercera clase Staff
-
 class Staff{
 
 private:
+//Atributos
     string nombre, area;
     int id;
 
 public:
-    Staff(): nombre(""), area(""), id(0){};
+//Constructores
+    Staff(): nombre(""), area(""), id(0){}; //Default
     Staff(string nom, string _area, int _id): nombre(nom), area(_area), id(_id){};
 
+//Metodos
     void confirmacion();
     string get_Nombre();
     string get_Area();
@@ -147,27 +158,6 @@ void Staff ::set_Id(int _id) {
 void Staff :: confirmacion() {
     cout << "Estos son sus datos:\nNombre: " << nombre << "\nId: " << id << "\nArea: " << area <<endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
