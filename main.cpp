@@ -6,11 +6,13 @@
 
 #include <iostream>
 #include "personas.h"
+
 using namespace std;
+
 
 int main() {
 
-    //Objeto  que manda a llamar metodos de la clase 1
+    //Objeto que manda a llamar metodos de la clase 1
     Jugador j1 ("Mauricio Garcia", 4098); //Inicializamos con ciertos datos
     cout << j1.get_Nombre() << endl;
     cout << j1.get_Id() << endl;
@@ -22,7 +24,8 @@ int main() {
     cout << endl;
 
 
-    //Objeto  que manda a llamar metodos de la clase 2
+
+    //Objeto que manda a llamar metodos de la clase 2
     Publico p1 ("Rafael Garcia", 42);
     cout << p1.get_Nombre() << endl;
     cout << p1.get_Edad() << endl;
@@ -38,7 +41,8 @@ int main() {
     cout << endl;
 
 
-    //Objeto  que manda a llamar metodos de la clase 3
+
+    //Objeto que manda a llamar metodos de la clase 3
     Staff s1 ("Eduardo Lopéz", "Seguridad", 3455);
     cout << s1.get_Nombre() << endl;
     cout << s1.get_Id() << endl;
@@ -49,6 +53,7 @@ int main() {
     s1.set_Id(5193);
     s1.set_Area("Limpieza");
     s1.confirmacion();
+
 
     return 0;
 }
