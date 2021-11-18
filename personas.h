@@ -20,13 +20,17 @@ public:
     General(): nombre(""), id_o_edad(0){};
     General(string nombre, int id_o_edad);
 
+    void confirmacion();
+
 };
 
 General::General(string nom, int ie) {
     nombre = nom;
     id_o_edad = ie;
 }
-
+void General :: confirmacion() {
+    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Id: " << id_o_edad << endl;
+}
 
 
 
