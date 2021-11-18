@@ -9,23 +9,39 @@
 #define PROYECTO_PERSONAS_H
 #include <string>
 
-
 using namespace std;
 
 
+class General{
+protected:
+    string nombre;
+    int id_o_edad;
+public:
+    General(): nombre(""), id_o_edad(0){};
+    General(string nombre, int id_o_edad);
 
-//Primera clase Jugador
-class Jugador{
+};
+
+General::General(string nom, int ie) {
+    nombre = nom;
+    id_o_edad = ie;
+}
+
+
+
+
+
+
+//Primera clase Jugador que hereda de General
+class Jugador: public General{
 
 private:
-//Atributos
-    string nombre;
-    int id;
+//Atributos heredados
 
 public:
 //Constructores
-    Jugador(): nombre(""), id(0){}; //Default
-    Jugador(string nom, int _id): nombre(nom), id(_id){};
+    Jugador(): General(){};//Default
+    Jugador(string nombre, int id_o_edad);
 
 //Metodos
     void confirmacion();
@@ -33,47 +49,44 @@ public:
     int get_Id();
     void set_Nombre(string);
     void set_Id(int);
+
 };
 
-
+Jugador::Jugador(string nom, int ie) {
+    nombre = nom;
+    id_o_edad = ie;
+}
 string Jugador ::get_Nombre() {
     return nombre;
 }
 int Jugador ::get_Id() {
-    return id;
+    return id_o_edad;
 }
 void Jugador ::set_Nombre(string nom) {
     nombre = nom;
 }
-void Jugador ::set_Id(int _id) {
-    id = _id;
+void Jugador ::set_Id(int ie) {
+    id_o_edad = ie;
 }
 void Jugador :: confirmacion() {
-    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Id: " << id << endl;
+    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Id: " << id_o_edad << endl;
 }
 
 
 
-
-
-
-
-
-//Segunda clase Publico
-class Publico{
+//Segunda clase Publico que hereda de General
+class Publico : public General{
 
 private:
 //Atributos
-    string nombre;
-    int edad;
 
 public:
 //Constructores
-    Publico(): nombre(""), edad(15){}; //Default (Inizializo en 15 para que por default cobre la entrada)
-    Publico(string nom, int _edad): nombre(nom), edad(_edad){};
+    Publico(): General(){}; //Default
+    Publico(string nombre, int id_o_edad);
 
 //Metodos
-    void precio();
+    int precio();
     void confirmacion();
     string get_Nombre();
     int get_Edad();
@@ -81,49 +94,49 @@ public:
     void set_Edad(int);
 
 };
-
+Publico::Publico(string nom, int ie) {
+    nombre = nom;
+    id_o_edad = ie;
+}
 string Publico ::get_Nombre() {
     return nombre;
 }
 int Publico :: get_Edad() {
-    return edad;
+    return id_o_edad;
 }
 void Publico ::set_Nombre(string nom) {
     nombre = nom;
 }
-void Publico :: set_Edad(int _edad) {
-    edad = _edad;
+void Publico :: set_Edad(int ie) {
+    id_o_edad = ie;
 }
 void Publico :: confirmacion() {
-    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Edad: " << edad << endl;
+    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Edad: " << id_o_edad << endl;
 }
 
-void Publico ::precio(){
-    if (edad > 14){
-        cout << "Su entrada tendría un precio de 30 pesos" << endl;
+int Publico ::precio(){
+    if (id_o_edad > 14){
+        return 30;
     }
     else{
-        cout << "Su entrada es gratuita" << endl;
+        return 0;
     }
 }
 
 
 
 
-
-
-// Tercera clase Staff
-class Staff{
+// Tercera clase Staff que hereda de General
+class Staff: public General{
 
 private:
 //Atributos
-    string nombre, area;
-    int id;
+    string area;
 
 public:
 //Constructores
-    Staff(): nombre(""), area(""), id(0){}; //Default
-    Staff(string nom, string _area, int _id): nombre(nom), area(_area), id(_id){};
+    Staff(): General(), area(""){}; //Default
+    Staff(string nombre, string area, int id_o_edad);
 
 //Metodos
     void confirmacion();
@@ -135,7 +148,11 @@ public:
     void set_Id(int);
 
 };
-
+Staff::Staff(string nom, string are, int ie) {
+    nombre = nom;
+    area = are;
+    id_o_edad = ie;
+}
 
 string Staff ::get_Nombre() {
     return nombre;
@@ -144,7 +161,7 @@ string Staff ::get_Area() {
     return area;
 }
 int Staff ::get_Id() {
-    return id;
+    return id_o_edad;
 }
 void Staff ::set_Nombre(string nom) {
     nombre = nom;
@@ -152,14 +169,12 @@ void Staff ::set_Nombre(string nom) {
 void Staff ::set_Area(string _area)  {
     area = _area;
 }
-void Staff ::set_Id(int _id) {
-    id = _id;
+void Staff ::set_Id(int ie) {
+    id_o_edad = ie;
 }
 void Staff :: confirmacion() {
-    cout << "Estos son sus datos:\nNombre: " << nombre << "\nId: " << id << "\nArea: " << area <<endl;
+    cout << "Estos son sus datos:\nNombre: " << nombre << "\nId: " << id_o_edad << "\nArea: " << area <<endl;
 }
-
-
 
 
 
