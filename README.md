@@ -9,7 +9,7 @@ La liga ABE esta organizando un toreno, por lo cual genera un programa para tene
 -------------------------------------------------------------------------------------------------------------------------------
 ### FUNCIONALIDAD
 
-El programa lleva un registro de todas las personas que entran a las intalaciones, por medio de arreglos, en donde cada tipo de Persona (Jugador, Público, Staff) se jurdaran en diferentes arreglos.
+El programa lleva un registro de todas las personas que entran a las intalaciones, por medio de arreglos, en donde cada tipo de Persona (Jugador, Público, Staff) se guardaran en diferentes arreglos.
 
 -------------------------------------------------------------------------------------------------------------------------------
 ### CONSIDERACIONES
