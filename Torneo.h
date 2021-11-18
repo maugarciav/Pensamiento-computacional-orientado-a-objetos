@@ -8,6 +8,7 @@
 #include <string>
 #include "personas.h"
 
+
 using namespace std;
 
 class Torneo{
@@ -16,6 +17,7 @@ private:
     string lista_p[100];
     string lista_s[30];
     int numj = 0, nump = 0, nums = 0;
+    int resj = 0, resp = 0, ress = 0;
 
 public:
     //constructor default
@@ -35,6 +37,24 @@ public:
 void Torneo ::agregar_jugador(string nom, int id) {
     if (numj < 50){
         Jugador j1 (nom, id);
+
+        j1.confirmacion();
+        cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+        cin >> resj;
+        while(resj == 0){
+            cout << "Nombre: ";
+            //Nose como hacer para que el cin pueda recibir un nombre completo ya que
+            // cuadno pongo un nombre + el espacio se crashea :(
+            cin >> nom;
+            //getline(cin,nom); nose porque no funciona de esta forma
+            j1.set_Nombre(nom);
+            cout <<  "ID: ";
+            cin >> id;
+            j1.set_Id(id);
+            cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+            cin >> resj;
+        }
+
         string completej = to_string(numj+ 1) + ". Nombre: " +
                 j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id()) +
                 "     //     Estatus: Jugador ";
@@ -56,6 +76,24 @@ void Torneo ::lista_jugadores() {
 void Torneo ::agregar_publico(string nom, int ed) {
     if (nump < 100){
         Publico p1 (nom, ed);
+
+        p1.confirmacion();
+        cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+        cin >> resp;
+        while(resp == 0){
+            cout << "Nombre: ";
+            //Nose como hacer para que el cin pueda recibir un nombre completo ya que
+            // cuadno pongo un nombre mas el espacio se crashea :(
+            cin >> nom;
+            //getline(cin,nom);
+            p1.set_Nombre(nom);
+            cout <<  "Edad: ";
+            cin >> ed;
+            p1.set_Edad(ed);
+            cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+            cin >> resp;
+        }
+
         string completep = to_string(nump+ 1) + ". Nombre: " +
                            p1.get_Nombre() + "     //     Edad:" + to_string(p1.get_Edad())+
                            "     //     Precio: "+ to_string(p1.precio())+
@@ -78,6 +116,27 @@ void Torneo ::lista_publico() {
 void Torneo :: agregar_staff(string nom, string ar, int id) {
     if (nums < 30){
         Staff s1 (nom, ar, id);
+
+        s1.confirmacion();
+        cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+        cin >> ress;
+        while(ress == 0){
+            cout << "Nombre: ";
+            //Nose como hacer para que el cin pueda recibir un nombre completo ya que
+            // cuadno pongo un nombre mas el espacio se crashea :(
+            cin >> nom;
+            //getline(cin,nom);
+            s1.set_Nombre(nom);
+            cout << "Area: ";
+            cin >> ar;
+            s1.set_Area(ar);
+            cout <<  "ID: ";
+            cin >> id;
+            s1.set_Id(id);
+            cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+            cin >> ress;
+        }
+
         string completes = to_string(nums+ 1) + ". Nombre: " +
                            s1.get_Nombre() + "     //     ID:" + to_string(s1.get_Id())+
                            "     //     Area: " + s1.get_Area() +  "     //     Estatus: Staff";
