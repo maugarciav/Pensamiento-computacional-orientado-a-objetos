@@ -5,55 +5,40 @@
  */
 
 #include <iostream>
-#include "personas.h"
+#include "Torneo.h"
+
+
 
 using namespace std;
 
 
 int main() {
 
-    //Objeto que manda a llamar metodos de la clase 1
-    Jugador j1 ("Mauricio Garcia", 4098); //Inicializamos con ciertos datos
-    cout << j1.get_Nombre() << endl;
-    cout << j1.get_Id() << endl;
+    Torneo j1;
+    j1.agregar_jugador("Mau", 4902);
+    j1.agregar_jugador("Albert", 4912);
+    j1.agregar_jugador("fernando", 2144);
 
-    j1.confirmacion();
-    j1.set_Nombre("Ivan Montano");
-    j1.set_Id(3020);
-    j1.confirmacion();
+
+    j1.lista_jugadores();
+
     cout << endl;
 
+    Torneo p1;
+    p1.agregar_publico("Rafael Eugenio", 43);
+    p1.agregar_publico("Erika Villanueva", 14);
+    p1.lista_publico();
 
-
-    //Objeto que manda a llamar metodos de la clase 2
-    Publico p1 ("Rafael Garcia", 42);
-    cout << p1.get_Nombre() << endl;
-    cout << p1.get_Edad() << endl;
-
-    p1.precio();
-    p1.set_Nombre("Rafael Jr");
-    p1.set_Edad(12);
-
-    cout << p1.get_Nombre() << endl;
-    cout << p1.get_Edad() << endl;
-    p1.confirmacion();
-    p1.precio();
     cout << endl;
+    Torneo s1;
+    s1.agregar_staff("Chuy", "Seguridiad", 3541);
+    s1.agregar_staff("Maria", "Arbitraje", 3533);
+    s1.lista_staff();
 
 
-
-    //Objeto que manda a llamar metodos de la clase 3
-    Staff s1 ("Eduardo Lopéz", "Seguridad", 3455);
-    cout << s1.get_Nombre() << endl;
-    cout << s1.get_Id() << endl;
-    cout << s1.get_Area() << endl;
-
-    s1.confirmacion();
-    s1.set_Nombre("Fernando Gonzalez");
-    s1.set_Id(5193);
-    s1.set_Area("Limpieza");
-    s1.confirmacion();
+    cout << endl;
 
 
     return 0;
+
 }
