@@ -9,6 +9,7 @@
 #define PROYECTO_PERSONAS_H
 #include <string>
 
+
 using namespace std;
 
 
@@ -16,11 +17,13 @@ class General{
 protected:
     string nombre;
     int id_o_edad;
+    string cov;
 public:
     General(): nombre(""), id_o_edad(0){};
     General(string nombre, int id_o_edad);
 
     void confirmacion();
+    bool covid();
 
 };
 
@@ -30,6 +33,20 @@ General::General(string nom, int ie) {
 }
 void General :: confirmacion() {
     cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Id: " << id_o_edad << endl;
+}
+bool General ::covid() {
+    cout << "¿Has estado en contacto con alguien con Covid en "
+            "los ultimos 14 dias?  si/no" << endl;
+    cin >> cov;
+    if(cov == "no" or cov == "No"){
+        cout << "Acceso permitido" << endl <<"\n";
+        return true;
+
+    }
+    else if (cov == "si" or cov == "Si"){
+        cout << "Acceso denegado" << endl << "\n";
+        return false;
+    }
 }
 
 
@@ -48,7 +65,6 @@ public:
     Jugador(string nombre, int id_o_edad);
 
 //Metodos
-    void confirmacion();
     string get_Nombre();
     int get_Id();
     void set_Nombre(string);
@@ -72,9 +88,8 @@ void Jugador ::set_Nombre(string nom) {
 void Jugador ::set_Id(int ie) {
     id_o_edad = ie;
 }
-void Jugador :: confirmacion() {
-    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Id: " << id_o_edad << endl;
-}
+
+
 
 
 
@@ -130,6 +145,8 @@ int Publico ::precio(){
 
 
 
+
+
 // Tercera clase Staff que hereda de General
 class Staff: public General{
 
@@ -179,9 +196,6 @@ void Staff ::set_Id(int ie) {
 void Staff :: confirmacion() {
     cout << "Estos son sus datos:\nNombre: " << nombre << "\nId: " << id_o_edad << "\nArea: " << area <<endl;
 }
-
-
-
 
 
 #endif //PROYECTO_PERSONAS_H
