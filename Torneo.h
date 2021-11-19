@@ -5,11 +5,12 @@
 
 #ifndef PROYECTO_TORNEO_H
 #define PROYECTO_TORNEO_H
+#include <iostream>
 #include <string>
 #include "personas.h"
 
-
 using namespace std;
+
 
 class Torneo{
 private:
@@ -17,7 +18,7 @@ private:
     string lista_p[100];
     string lista_s[30];
     int numj = 0, nump = 0, nums = 0;
-    string resj, resp,  ress;
+    string resj, resp, ress;
     string completej, completep, completes;
 
 public:
@@ -38,28 +39,32 @@ public:
 void Torneo ::agregar_jugador(string nom, int id) {
     if (numj < 50){
         Jugador j1 (nom, id);
-        Jugador jug = j1;
         j1.confirmacion();
-        cout << "Tus datos son correctos? si/no  " <<endl;
+        cout << "¿Tus datos son correctos? si/no" <<endl;
         cin >> resj;
         while(resj == "no" or resj == "No" or resj == "NO"){
             cout << "Nombre: ";
             //Nose como hacer para que el cin pueda recibir un nombre completo ya que
             // cuadno pongo un nombre + el espacio se crashea :(
             cin >> nom;
-            //getline(cin,nom); nose porque no funciona de esta forma
+            //getline(cin,nom); //nose porque no funciona de esta forma
             j1.set_Nombre(nom);
             cout <<  "ID: ";
             cin >> id;
             j1.set_Id(id);
-            cout << "Tus datos son correctos? si/no  " <<endl;
+            cout << "¿Tus datos son correctos? si/no " <<endl;
             cin >> resj;
         }
 
-        completej = to_string(numj+ 1) + ". Nombre: " +
+        if (j1.covid() == false) {
+            j1.set_Nombre("Acceso denegado");
+            j1.set_Id(0);
+        }
+
+        completej = to_string(numj + 1) + ". Nombre: " +
                     j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id()) +
                     "     //     Estatus: Jugador ";
-        lista_j[numj] =  completej;
+        lista_j[numj] = completej;
         numj++;
 
     }
@@ -80,7 +85,7 @@ void Torneo ::agregar_publico(string nom, int ed) {
         Publico p1 (nom, ed);
 
         p1.confirmacion();
-        cout << "Tus datos son correctos? si/no " <<endl;
+        cout << "¿Tus datos son correctos? si/no " <<endl;
         cin >> resp;
         while(resp == "no" or resp == "No" or resp == "NO"){
             cout << "Nombre: ";
@@ -92,8 +97,13 @@ void Torneo ::agregar_publico(string nom, int ed) {
             cout <<  "Edad: ";
             cin >> ed;
             p1.set_Edad(ed);
-            cout << "Tus datos son correctos? si/no = 0  " <<endl;
+            cout << "¿Tus datos son correctos? si/no   " <<endl;
             cin >> resp;
+        }
+
+        if (p1.covid() == false) {
+            p1.set_Nombre("Acceso denegado");
+            p1.set_Edad(0);
         }
 
         completep = to_string(nump+ 1) + ". Nombre: " +
@@ -120,7 +130,7 @@ void Torneo :: agregar_staff(string nom, string ar, int id) {
         Staff s1 (nom, ar, id);
 
         s1.confirmacion();
-        cout << "Tus datos son correctos? si/no  " <<endl;
+        cout << "¿Tus datos son correctos? si/no  " <<endl;
         cin >> ress;
         while(ress == "no" or ress == "No" or ress == "NO"){
             cout << "Nombre: ";
@@ -135,8 +145,13 @@ void Torneo :: agregar_staff(string nom, string ar, int id) {
             cout <<  "ID: ";
             cin >> id;
             s1.set_Id(id);
-            cout << "Tus datos son correctos? si/no " <<endl;
+            cout << "¿Tus datos son correctos? si/no  " <<endl;
             cin >> ress;
+        }
+        if (s1.covid() == false) {
+            s1.set_Nombre("Acceso denegado");
+            s1.set_Area("");
+            s1.set_Id(0);
         }
 
         completes = to_string(nums+ 1) + ". Nombre: " +
@@ -156,6 +171,8 @@ void Torneo ::lista_staff() {
         cout << lista_s[i] <<endl;
     }
 }
+
+
 
 
 
