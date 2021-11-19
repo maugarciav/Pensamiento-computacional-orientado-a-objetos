@@ -29,17 +29,17 @@ using namespace std;
 int main() {
 
        Torneo j1;
-       j1.agregar_jugador("Mau", 4902);
+       j1.agregar_jugador("Mauricio", 4902);
        j1.agregar_jugador("Albert", 4912);
-       j1.agregar_jugador("fernando", 2144);
+       j1.agregar_jugador("Fernando", 2144);
        j1.lista_jugadores();
 
        cout << endl;
 
 
        Torneo p1;
-       p1.agregar_publico("Rafael Eugenio", 43);
-       p1.agregar_publico("Erika Villanueva", 14);
+       p1.agregar_publico("Rafael", 43);
+       p1.agregar_publico("Erika", 14);
        p1.lista_publico();
 
 
