@@ -9,10 +9,9 @@
 #define PROYECTO_PERSONAS_H
 #include <string>
 
-
 using namespace std;
 
-
+//Clase Padre
 class General{
 protected:
     string nombre;
@@ -24,6 +23,10 @@ public:
 
     void confirmacion();
     bool covid();
+    string get_Nombre();
+    int get_Id_o_edad();
+    void set_Nombre(string);
+    void set_Id_o_edad(int);
 
 };
 
@@ -49,7 +52,18 @@ bool General ::covid() {
         return false;
     }
 }
-
+string General ::get_Nombre() {
+    return nombre;
+}
+int General ::get_Id_o_edad() {
+    return id_o_edad;
+}
+void General ::set_Nombre(string nom) {
+    nombre = nom;
+}
+void General ::set_Id_o_edad(int ie) {
+    id_o_edad = ie;
+}
 
 
 
@@ -65,30 +79,14 @@ public:
     Jugador(): General(){};//Default
     Jugador(string nombre, int id_o_edad);
 
-//Metodos
-    string get_Nombre();
-    int get_Id();
-    void set_Nombre(string);
-    void set_Id(int);
+//Metodos heredados
 
 };
-
 Jugador::Jugador(string nom, int ie) {
     nombre = nom;
     id_o_edad = ie;
 }
-string Jugador ::get_Nombre() {
-    return nombre;
-}
-int Jugador ::get_Id() {
-    return id_o_edad;
-}
-void Jugador ::set_Nombre(string nom) {
-    nombre = nom;
-}
-void Jugador ::set_Id(int ie) {
-    id_o_edad = ie;
-}
+
 
 
 
@@ -98,7 +96,7 @@ void Jugador ::set_Id(int ie) {
 class Publico : public General{
 
 private:
-//Atributos
+//Atributos heredados
 
 public:
 //Constructores
@@ -107,27 +105,12 @@ public:
 
 //Metodos
     int precio();
-    void confirmacion();
-    string get_Nombre();
-    int get_Edad();
-    void set_Nombre(string);
-    void set_Edad(int);
+    void confirmacion(); //sobrescritura
+
 
 };
 Publico::Publico(string nom, int ie) {
     nombre = nom;
-    id_o_edad = ie;
-}
-string Publico ::get_Nombre() {
-    return nombre;
-}
-int Publico :: get_Edad() {
-    return id_o_edad;
-}
-void Publico ::set_Nombre(string nom) {
-    nombre = nom;
-}
-void Publico :: set_Edad(int ie) {
     id_o_edad = ie;
 }
 void Publico :: confirmacion() {
@@ -161,13 +144,10 @@ public:
     Staff(string nombre, string area, int id_o_edad);
 
 //Metodos
-    void confirmacion();
-    string get_Nombre();
+    void confirmacion(); //sobreescritura
     string get_Area();
-    int get_Id();
-    void set_Nombre(string);
     void set_Area(string);
-    void set_Id(int);
+
 
 };
 Staff::Staff(string nom, string are, int ie) {
@@ -176,27 +156,17 @@ Staff::Staff(string nom, string are, int ie) {
     id_o_edad = ie;
 }
 
-string Staff ::get_Nombre() {
-    return nombre;
-}
 string Staff ::get_Area() {
     return area;
-}
-int Staff ::get_Id() {
-    return id_o_edad;
-}
-void Staff ::set_Nombre(string nom) {
-    nombre = nom;
 }
 void Staff ::set_Area(string _area)  {
     area = _area;
 }
-void Staff ::set_Id(int ie) {
-    id_o_edad = ie;
-}
 void Staff :: confirmacion() {
     cout << "Estos son sus datos:\nNombre: " << nombre << "\nId: " << id_o_edad << "\nArea: " << area <<endl;
 }
+
+
 
 
 #endif //PROYECTO_PERSONAS_H
