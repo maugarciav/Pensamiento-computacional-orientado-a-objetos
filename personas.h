@@ -44,7 +44,8 @@ bool General ::covid() {
 
     }
     else if (cov == "si" or cov == "Si"){
-        cout << "Acceso denegado" << endl << "\n";
+        cout << "Acceso denegado" << endl;
+        cout << "No tienes permitido el acceso\n" <<endl;
         return false;
     }
 }
