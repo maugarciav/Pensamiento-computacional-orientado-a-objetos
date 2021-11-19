@@ -17,7 +17,8 @@ private:
     string lista_p[100];
     string lista_s[30];
     int numj = 0, nump = 0, nums = 0;
-    int resj = 0, resp = 0, ress = 0;
+    string resj, resp,  ress;
+    string completej, completep, completes;
 
 public:
     //constructor default
@@ -37,11 +38,11 @@ public:
 void Torneo ::agregar_jugador(string nom, int id) {
     if (numj < 50){
         Jugador j1 (nom, id);
-
+        Jugador jug = j1;
         j1.confirmacion();
-        cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+        cout << "Tus datos son correctos? si/no  " <<endl;
         cin >> resj;
-        while(resj == 0){
+        while(resj == "no" or resj == "No" or resj == "NO"){
             cout << "Nombre: ";
             //Nose como hacer para que el cin pueda recibir un nombre completo ya que
             // cuadno pongo un nombre + el espacio se crashea :(
@@ -51,15 +52,16 @@ void Torneo ::agregar_jugador(string nom, int id) {
             cout <<  "ID: ";
             cin >> id;
             j1.set_Id(id);
-            cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+            cout << "Tus datos son correctos? si/no  " <<endl;
             cin >> resj;
         }
 
-        string completej = to_string(numj+ 1) + ". Nombre: " +
-                j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id()) +
-                "     //     Estatus: Jugador ";
-        lista_j[numj] = completej;
+        completej = to_string(numj+ 1) + ". Nombre: " +
+                    j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id()) +
+                    "     //     Estatus: Jugador ";
+        lista_j[numj] =  completej;
         numj++;
+
     }
     else{
         cout << "Ya no hay espacio disponible para jugadores" << endl;
@@ -68,7 +70,7 @@ void Torneo ::agregar_jugador(string nom, int id) {
 }
 void Torneo ::lista_jugadores() {
     for (int i = 0; i < numj; i++ ){
-        cout << lista_j[i] <<endl;
+        cout << lista_j[i]  <<endl;
     }
 }
 
@@ -78,9 +80,9 @@ void Torneo ::agregar_publico(string nom, int ed) {
         Publico p1 (nom, ed);
 
         p1.confirmacion();
-        cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+        cout << "Tus datos son correctos? si/no " <<endl;
         cin >> resp;
-        while(resp == 0){
+        while(resp == "no" or resp == "No" or resp == "NO"){
             cout << "Nombre: ";
             //Nose como hacer para que el cin pueda recibir un nombre completo ya que
             // cuadno pongo un nombre mas el espacio se crashea :(
@@ -90,14 +92,14 @@ void Torneo ::agregar_publico(string nom, int ed) {
             cout <<  "Edad: ";
             cin >> ed;
             p1.set_Edad(ed);
-            cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+            cout << "Tus datos son correctos? si/no = 0  " <<endl;
             cin >> resp;
         }
 
-        string completep = to_string(nump+ 1) + ". Nombre: " +
-                           p1.get_Nombre() + "     //     Edad:" + to_string(p1.get_Edad())+
-                           "     //     Precio: "+ to_string(p1.precio())+
-                           " pesos     //     Estatus: Publico";
+        completep = to_string(nump+ 1) + ". Nombre: " +
+                    p1.get_Nombre() + "     //     Edad:" + to_string(p1.get_Edad())+
+                    "     //     Precio: "+ to_string(p1.precio())+
+                    " pesos     //     Estatus: Publico";
         lista_p[nump] = completep;
         nump++;
     }
@@ -118,9 +120,9 @@ void Torneo :: agregar_staff(string nom, string ar, int id) {
         Staff s1 (nom, ar, id);
 
         s1.confirmacion();
-        cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+        cout << "Tus datos son correctos? si/no  " <<endl;
         cin >> ress;
-        while(ress == 0){
+        while(ress == "no" or ress == "No" or ress == "NO"){
             cout << "Nombre: ";
             //Nose como hacer para que el cin pueda recibir un nombre completo ya que
             // cuadno pongo un nombre mas el espacio se crashea :(
@@ -133,13 +135,13 @@ void Torneo :: agregar_staff(string nom, string ar, int id) {
             cout <<  "ID: ";
             cin >> id;
             s1.set_Id(id);
-            cout << "Tus datos son correctos? si = 1 / no = 0  " <<endl;
+            cout << "Tus datos son correctos? si/no " <<endl;
             cin >> ress;
         }
 
-        string completes = to_string(nums+ 1) + ". Nombre: " +
-                           s1.get_Nombre() + "     //     ID:" + to_string(s1.get_Id())+
-                           "     //     Area: " + s1.get_Area() +  "     //     Estatus: Staff";
+        completes = to_string(nums+ 1) + ". Nombre: " +
+                    s1.get_Nombre() + "     //     ID:" + to_string(s1.get_Id())+
+                    "     //     Area: " + s1.get_Area() +  "     //     Estatus: Staff";
         lista_s[nums] = completes;
         nums++;
     }
@@ -154,9 +156,6 @@ void Torneo ::lista_staff() {
         cout << lista_s[i] <<endl;
     }
 }
-
-
-
 
 
 
