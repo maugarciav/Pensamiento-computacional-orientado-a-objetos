@@ -59,19 +59,14 @@ void Torneo ::agregar_jugador(string nom, int id) {
             cin >> resj;
         }
 
-        if (j1.covid() == false) {
-            j1.set_Nombre("Acceso denegado");
-        }
 
-
-        if(j1.get_Nombre() != "Acceso denegado"){ // No se agregan a la lista las personas que estuvieron en contacto
+        if (j1.covid() != false) {// No se agregan a la lista las personas que estuvieron en contacto
             //COVID
             completej = to_string(numj + 1) + ". Nombre: " +
                         j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id()) +
                         "     //     Estatus: Jugador ";
             lista_j[numj] = completej;
             numj++;
-
         }
 
     }
@@ -112,20 +107,15 @@ void Torneo ::agregar_publico(string nom, int ed) {
             cin >> resp;
         }
 
-        if (p1.covid() == false) {
-            p1.set_Nombre("Acceso denegado");
 
-        }
-        if (p1.get_Nombre() != "Acceso denegado"){
+        if (p1.covid() != false) { //Personas en contacto con covid no son agregadas a la lista ya que no
+            //tienen el acceso permitido
             completep = to_string(nump+ 1) + ". Nombre: " +
                         p1.get_Nombre() + "     //     Edad:" + to_string(p1.get_Edad())+
                         "     //     Precio: "+ to_string(p1.precio())+
                         " pesos     //     Estatus: Publico";
             lista_p[nump] = completep;
             nump++;
-        }
-        else{
-            cout << "No tienes permitido el acceso" <<endl;
         }
 
     }
@@ -167,18 +157,14 @@ void Torneo :: agregar_staff(string nom, string ar, int id) {
             cout << "¿Tus datos son correctos? si/no  " <<endl;
             cin >> ress;
         }
-        if (s1.covid() == false) {
-            s1.set_Nombre("Acceso denegado");
 
-        }
 
-        if (s1.get_Nombre() != "Acceso denegado"){
+        if (s1.covid() != false) {
             completes = to_string(nums+ 1) + ". Nombre: " +
                         s1.get_Nombre() + "     //     ID:" + to_string(s1.get_Id())+
                         "     //     Area: " + s1.get_Area() +  "     //     Estatus: Staff";
             lista_s[nums] = completes;
             nums++;
-
         }
 
     }
