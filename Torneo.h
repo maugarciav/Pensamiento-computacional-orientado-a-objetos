@@ -54,7 +54,7 @@ void Torneo ::agregar_jugador(string nom, int id) {
             j1.set_Nombre(nom);
             cout <<  "ID: ";
             cin >> id;
-            j1.set_Id(id);
+            j1.set_Id_o_edad(id);
             cout << "¿Tus datos son correctos? si/no " <<endl;
             cin >> resj;
         }
@@ -63,7 +63,7 @@ void Torneo ::agregar_jugador(string nom, int id) {
         if (j1.covid() != false) {// No se agregan a la lista las personas que estuvieron en contacto
             //COVID
             completej = to_string(numj + 1) + ". Nombre: " +
-                        j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id()) +
+                        j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id_o_edad()) +
                         "     //     Estatus: Jugador ";
             lista_j[numj] = completej;
             numj++;
@@ -102,7 +102,7 @@ void Torneo ::agregar_publico(string nom, int ed) {
             p1.set_Nombre(nom);
             cout <<  "Edad: ";
             cin >> ed;
-            p1.set_Edad(ed);
+            p1.set_Id_o_edad(ed);
             cout << "¿Tus datos son correctos? si/no   " <<endl;
             cin >> resp;
         }
@@ -111,7 +111,7 @@ void Torneo ::agregar_publico(string nom, int ed) {
         if (p1.covid() != false) { //Personas en contacto con covid no son agregadas a la lista ya que no
             //tienen el acceso permitido
             completep = to_string(nump+ 1) + ". Nombre: " +
-                        p1.get_Nombre() + "     //     Edad:" + to_string(p1.get_Edad())+
+                        p1.get_Nombre() + "     //     Edad:" + to_string(p1.get_Id_o_edad())+
                         "     //     Precio: "+ to_string(p1.precio())+
                         " pesos     //     Estatus: Publico";
             lista_p[nump] = completep;
@@ -153,7 +153,7 @@ void Torneo :: agregar_staff(string nom, string ar, int id) {
             s1.set_Area(ar);
             cout <<  "ID: ";
             cin >> id;
-            s1.set_Id(id);
+            s1.set_Id_o_edad(id);
             cout << "¿Tus datos son correctos? si/no  " <<endl;
             cin >> ress;
         }
@@ -161,7 +161,7 @@ void Torneo :: agregar_staff(string nom, string ar, int id) {
 
         if (s1.covid() != false) {
             completes = to_string(nums+ 1) + ". Nombre: " +
-                        s1.get_Nombre() + "     //     ID:" + to_string(s1.get_Id())+
+                        s1.get_Nombre() + "     //     ID:" + to_string(s1.get_Id_o_edad())+
                         "     //     Area: " + s1.get_Area() +  "     //     Estatus: Staff";
             lista_s[nums] = completes;
             nums++;
