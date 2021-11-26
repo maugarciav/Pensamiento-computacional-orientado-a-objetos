@@ -7,12 +7,6 @@
 
 /*
  * Comentarios:
- * Empece a implementar herencia y composicion, no estoy seguro si lo hice de forma
- * correcta.
- *
- * Al main aun le hacen falta todos los inputs, para que el programa tenga mas sentido
- * a la hora de registrarse
- *
  * En Torneo.h, al mandar a llamar el metodo confirmacion y querer registar un
  * nombre + espacio se crashea, intente usar getline(), pero no me funciono, aun estoy
  * investigadno como hacerlo.
@@ -21,41 +15,84 @@
 #include <iostream>
 #include "Torneo.h"
 
-
-
 using namespace std;
 
 
-int main() {
+void menu() {
 
-       Torneo j1;
-       j1.agregar_jugador("Mauricio", 4902);
-       j1.agregar_jugador("Albert", 4912);
-       j1.agregar_jugador("Fernando", 2144);
-       j1.lista_jugadores();
+    cout << "Menu:\n";
+    cout << "1. Registrar Jugador \n";
+    cout << "2. Registrar Publico \n";
+    cout << "3. Registrar Staff \n";
+    cout << "4. Ver lista de Jugadores \n";
+    cout << "5. Ver lista de Publcio \n";
+    cout << "6. Ver lista de Staff \n";
+    cout << "7. Salir \n";
+}
 
-       cout << endl;
+int main(){
+    Torneo j1;
+    Torneo p1;
+    Torneo s1;
+
+    int opcion = 0;
+    string nom, area;
+    int id_edad;
+    bool continua = true;
+
+    while (continua == true){
+        menu();
+        cout << endl << "Opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1){
+            cout << "Nombre: ";
+            cin >> nom;
+            cout << "ID: ";
+            cin >> id_edad;
+            j1.agregar_jugador(nom, id_edad);
+        }
+
+        else if (opcion == 2){
+            cout << "Nombre: ";
+            cin >> nom;
+            cout << "Edad: ";
+            cin >> id_edad;
+            p1.agregar_publico(nom, id_edad);
+
+        }
+        else if (opcion == 3){
+            cout << "Nombre: ";
+            cin >> nom;
+            cout << "Area: ";
+            cin >> area;
+            cout << "ID: ";
+            cin >> id_edad;
+            s1.agregar_staff(nom,area, id_edad);
 
 
-       Torneo p1;
-       p1.agregar_publico("Rafael", 43);
-       p1.agregar_publico("Erika", 14);
-       p1.lista_publico();
+        }
+        else if (opcion == 4){
+            j1.lista_jugadores();
+        }
+
+        else if (opcion == 5){
+            p1.lista_publico();
+        }
+
+        else if (opcion == 6){
+            s1.lista_staff();
+        }
+
+        else if(opcion == 7){
+            continua = false;
+            cout << "ADIOS" << endl;
+        }
+
+        else{
+            cout << "Opcion invalida" << endl;
+        }
 
 
-
-       cout << endl;
-
-
-
-       Torneo s1;
-       s1.agregar_staff("Chuy", "Seguridiad", 3541);
-       s1.agregar_staff("Maria", "Arbitraje", 3533);
-       s1.lista_staff();
-
-
-       cout << endl;
-
-
-    return 0;
+    }
 }
