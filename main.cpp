@@ -60,9 +60,12 @@ int main(){
             cin >> co;
             if (co == "si"){
                 j1.registrar_jugador(nom, id, true);
+                cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
+
             }
             else{
                 j1.registrar_jugador(nom, id, false);
+                cout << "Acceso Permitido" << endl;
             }
 
         }
@@ -76,9 +79,11 @@ int main(){
             cin >> co;
             if(co == "si"){
                 p1.registar_publico(nom, edad, true);
+                cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
             }
             else{
                 p1.registar_publico(nom, edad, false);
+                cout << "Acceso Permitido" << endl;
             }
 
         }
@@ -94,9 +99,11 @@ int main(){
             cin >> co;
             if(co == "si"){
                 s1.registar_staff(nom, area, horas, true);
+                cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
             }
             else{
                 s1.registar_staff(nom, area, horas, false);
+                cout << "Acceso Permitido" << endl;
             }
         }
         else if(opcion == 4){
