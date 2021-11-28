@@ -57,7 +57,6 @@ int Torneo::registrar_jugador(string nom, int _id, bool co) {
             cout << "Ya no hay espacio" << endl;
         }
     }
-    cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
 }
 
 int Torneo ::registar_publico(string nom , int ed, bool co) {
@@ -72,7 +71,6 @@ int Torneo ::registar_publico(string nom , int ed, bool co) {
             cout << "Ya no hay espacio" << endl;
         }
     }
-    cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
 }
 
 int Torneo::registar_staff(string nom, string ar, float hor, bool co) {
@@ -87,7 +85,6 @@ int Torneo::registar_staff(string nom, string ar, float hor, bool co) {
             cout << "Ya no hay espacio" << endl;
         }
     }
-    cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
 }
 
 int Torneo::registrar_equipo(string nom, string coa, int rank) {
