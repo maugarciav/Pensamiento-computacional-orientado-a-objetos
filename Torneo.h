@@ -1,191 +1,195 @@
-
 //
-// Created by Mauricio Garcia on 17/11/21.
+// Created by Mauricio Garcia on 27/11/21.
 //
 
-#ifndef PROYECTO_TORNEO_H
-#define PROYECTO_TORNEO_H
+#ifndef PROYECTOFINAL_TORNEO_H
+#define PROYECTOFINAL_TORNEO_H
+#include "personas.h"
+#include "equipo.h"
 #include <iostream>
 #include <string>
-#include "personas.h"
-
 using namespace std;
+
 
 
 class Torneo{
 private:
-    string lista_j[50];
-    string lista_p[100];
-    string lista_s[30];
-    int numj = 0, nump = 0, nums = 0;
-    string resj, resp, ress;
-    string completej, completep, completes;
+    Jugador players[120];
+    Publico people[300];
+    Staff sstaff[70];
+    Equipo teams[10];
+
+    int ij = 0, ip= 0, is= 0, ie = 0;
 
 public:
-    //constructor default
-    Torneo(): lista_j(), lista_p(), lista_s(){};
+    Torneo():players(), people(), sstaff(){};
 
-    void agregar_jugador(string, int);
-    void agregar_publico(string, int);
-    void agregar_staff(string, string, int);
+    int registrar_jugador(string, int, bool);
+    int registar_publico(string, int, bool);
+    int registar_staff(string, string, float, bool);
+    int registrar_equipo(string, string, int);
 
-    void lista_jugadores();
-    void lista_publico();
-    void lista_staff();
+    void ver_jugadores();
+    void ver_publico();
+    void ver_staff();
+    void ver_equipos();
+
+    int agregar_horas(string, float);
+    int ver_horas(string);
+
+    int buscar_jugador(string);
+    int buscar_publico(string);
+    int buscar_staff(string);
+
+    int actualizar_ranking(string, int);
 
 
 };
-
-
-
-
-void Torneo ::agregar_jugador(string nom, int id) {
-    if (numj < 50){
-        Jugador j1 (nom, id);
-        j1.confirmacion();
-        cout << "¿Tus datos son correctos? si/no" <<endl;
-        cin >> resj;
-        while(resj == "no" or resj == "No" or resj == "NO"){
-            cout << "Nombre: ";
-            //Nose como hacer para que el cin pueda recibir un nombre completo ya que
-            // cuadno pongo un nombre + el espacio se crashea :(
-            cin >> nom;
-            //getline(cin,nom); //nose porque no funciona de esta forma
-            j1.set_Nombre(nom);
-            cout <<  "ID: ";
-            cin >> id;
-            j1.set_Id_o_edad(id);
-            cout << "¿Tus datos son correctos? si/no " <<endl;
-            cin >> resj;
+int Torneo::registrar_jugador(string nom, int _id, bool co) {
+    if (co == false){
+        if (ij <= 120){
+            Jugador j1(nom, _id, co);
+            players [ij] = j1;
+            ij++;
+            return 0;
         }
-
-
-        if (j1.covid() != false) {// No se agregan a la lista las personas que estuvieron en contacto
-            //COVID
-            completej = to_string(numj + 1) + ". Nombre: " +
-                        j1.get_Nombre() + "     //     ID:" + to_string(j1.get_Id_o_edad()) +
-                        "     //     Estatus: Jugador ";
-            lista_j[numj] = completej;
-            numj++;
+        else {
+            cout << "Ya no hay espacio" << endl;
         }
-
     }
-    else{
-        cout << "Ya no hay espacio disponible para jugadores" << endl;
-    }
-
-
-
-}
-void Torneo ::lista_jugadores() {
-    for (int i = 0; i < numj; i++ ){
-        cout << lista_j[i]  <<endl;
-    }
+    cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
 }
 
-
-
-
-void Torneo ::agregar_publico(string nom, int ed) {
-    if (nump < 100){
-        Publico p1 (nom, ed);
-
-        p1.confirmacion();
-        cout << "¿Tus datos son correctos? si/no " <<endl;
-        cin >> resp;
-        while(resp == "no" or resp == "No" or resp == "NO"){
-            cout << "Nombre: ";
-            //Nose como hacer para que el cin pueda recibir un nombre completo ya que
-            // cuadno pongo un nombre mas el espacio se crashea :(
-            cin >> nom;
-            //getline(cin,nom);
-            p1.set_Nombre(nom);
-            cout <<  "Edad: ";
-            cin >> ed;
-            p1.set_Id_o_edad(ed);
-            cout << "¿Tus datos son correctos? si/no   " <<endl;
-            cin >> resp;
+int Torneo ::registar_publico(string nom , int ed, bool co) {
+    if(co == false){
+        if (ip <= 300){
+            Publico p1(nom, ed, co);
+            people[ip] = p1;
+            ip++;
+            return 0;
         }
-
-
-        if (p1.covid() != false) { //Personas en contacto con covid no son agregadas a la lista ya que no
-            //tienen el acceso permitido
-            completep = to_string(nump+ 1) + ". Nombre: " +
-                        p1.get_Nombre() + "     //     Edad:" + to_string(p1.get_Id_o_edad())+
-                        "     //     Precio: "+ to_string(p1.precio())+
-                        " pesos     //     Estatus: Publico";
-            lista_p[nump] = completep;
-            nump++;
+        else{
+            cout << "Ya no hay espacio" << endl;
         }
+    }
+    cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
+}
 
+int Torneo::registar_staff(string nom, string ar, float hor, bool co) {
+    if(co == false){
+        if(is < 70){
+            Staff s1(nom, ar, hor, co);
+            sstaff[is] = s1;
+            is++;
+            return 0;
+        }
+        else {
+            cout << "Ya no hay espacio" << endl;
+        }
+    }
+    cout << "No tienes permitido el acceso debido a tu acercameinto con un contagiado de COVID" << endl;
+}
+
+int Torneo::registrar_equipo(string nom, string coa, int rank) {
+    if (ie < 10){
+        Equipo e1(nom,coa, rank);
+        teams[ie]= e1;
+        ie++;
+        return 0;
+    }
+    else {
+        cout << "Ya no hay espacio para registrar equipos" << endl;
     }
 
-
-
-
 }
-void Torneo ::lista_publico() {
-    for (int i = 0; i < nump; i++ ){
-        cout << lista_p[i] <<endl;
 
+void Torneo::ver_jugadores() {
+    for(int i = 0; i < ij; i++){
+        cout << "Nombre: " << players[i].get_nombre() << " //  ID: " << players[i].get_id() << endl;
+    }
+}
+void Torneo::ver_publico() {
+    for(int i = 0; i < ip; i++){
+        cout << "Nombre: " << people[i].get_nombre() << "  //  Edad: " << people[i].get_edad()
+             << "  //  Precio: " << people[i].precio() << endl;
+    }
+}
+void Torneo::ver_staff() {
+    for(int i = 0; i < is; i++){
+        cout << "Nombre: " << sstaff[i].get_nombre() << "  //  Area: " << sstaff[i].get_area()
+             << "  //  Horas trabajadas: " << sstaff[i].get_horas() <<"h" << endl;
+    }
+}
+void Torneo::ver_equipos() {
+    for(int i = 0; i < ie; i++){
+        cout << "EQUIPO: " << teams[i].get_nombre() << "  // Coach: " << teams[i].get_coach()
+             << "  //  Ranking: " << teams[i].get_ranking() << endl;
     }
 }
 
-
-
-
-void Torneo :: agregar_staff(string nom, string ar, int id) {
-    if (nums < 30){
-        Staff s1 (nom, ar, id);
-
-        s1.confirmacion();
-        cout << "¿Tus datos son correctos? si/no  " <<endl;
-        cin >> ress;
-        while(ress == "no" or ress == "No" or ress == "NO"){
-            cout << "Nombre: ";
-            //Nose como hacer para que el cin pueda recibir un nombre completo ya que
-            // cuadno pongo un nombre mas el espacio se crashea :(
-            cin >> nom;
-            //getline(cin,nom);
-            s1.set_Nombre(nom);
-            cout << "Area: ";
-            cin >> ar;
-            s1.set_Area(ar);
-            cout <<  "ID: ";
-            cin >> id;
-            s1.set_Id_o_edad(id);
-            cout << "¿Tus datos son correctos? si/no  " <<endl;
-            cin >> ress;
+int Torneo::agregar_horas(string nom, float hor) {
+    for(int i = 0; i < is; i++){
+        if (sstaff[i].get_nombre() == nom){
+            sstaff[i].agregarhoras(hor);
+            return 0;
         }
-
-
-        if (s1.covid() != false) {
-            completes = to_string(nums+ 1) + ". Nombre: " +
-                        s1.get_Nombre() + "     //     ID:" + to_string(s1.get_Id_o_edad())+
-                        "     //     Area: " + s1.get_Area() +  "     //     Estatus: Staff";
-            lista_s[nums] = completes;
-            nums++;
-        }
-
     }
-    else{
-        cout << "Los miembros del Staff ya estan completos" << endl;
-    }
-
-
-
+    cout << "La persona no esta registrada" << endl;
 
 }
-void Torneo ::lista_staff() {
-    for (int i = 0; i < nums; i++ ){
-        cout << lista_s[i] <<endl;
+
+int Torneo::ver_horas(string nom) {
+    for(int i = 0; i < is; i++) {
+        if (sstaff[i].get_nombre() == nom) {
+            cout << sstaff[i].get_horas() <<"h" << endl;
+            return 0;
+        }
     }
+    cout << "La persona no esta registrada" << endl;
+}
+
+int Torneo::buscar_jugador(string nom) {
+    for(int i = 0; i < ij; i++){
+        if (players[i].get_nombre() == nom){
+            cout << "El jugador ya esta registrad@" << endl;
+            return 0; //para acabar el ciclo
+        }
+    }
+    cout << "El jugador NO esta registrad@" << endl;
+
+}
+
+int Torneo::buscar_publico(string nom) {
+    for(int i = 0; i < ip; i++){
+        if(people[i].get_nombre() == nom){
+            cout << "Ya esta registrad@" << endl;
+            return 0;
+        }
+    }
+    cout << "No esta registrad@" << endl;
+}
+
+int Torneo::buscar_staff(string nom) {
+    for(int i = 0; i < is; i++){
+        if(sstaff[i].get_nombre() == nom){
+            cout << "Ya esta registrad@" << endl;
+            return 0;
+        }
+    }
+    cout << "No esta registrad@" << endl;
+}
+
+int Torneo::actualizar_ranking(string equ, int rank) {
+    for(int i = 0; i < ie; i++){
+        if(teams[i].get_nombre() == equ){
+            teams[i].set_ranking(rank);
+            return 0;
+        }
+    }
+    cout << "El equipo no esta regitrado" << endl;
+
 }
 
 
 
-
-
-
-
-#endif //PROYECTO_TORNEO_H
+#endif //PROYECTOFINAL_TORNEO_H
