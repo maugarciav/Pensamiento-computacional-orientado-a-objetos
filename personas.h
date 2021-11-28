@@ -1,124 +1,102 @@
-/*
- * Proyecto Torneo ABE
- * Mauricio Garcia Villanueva
- * A01704098
- */
+//
+// Created by Mauricio Garcia on 27/11/21.
+//
 
-
-#ifndef PROYECTO_PERSONAS_H
-#define PROYECTO_PERSONAS_H
+#ifndef PROYECTOFINAL_PERSONAS_H
+#define PROYECTOFINAL_PERSONAS_H
 #include <string>
+
 
 using namespace std;
 
-//Clase Padre
-class General{
+//clase padre
+class Personas{
 protected:
     string nombre;
-    int id_o_edad;
-    string cov;
-public:
-    General(): nombre(""), id_o_edad(0){};
-    General(string nombre, int id_o_edad);
+    bool covid; //no hay setters de covid porque este atributo no se puede modificar una vez ingresado
 
-    void confirmacion();
-    bool covid();
-    string get_Nombre();
-    int get_Id_o_edad();
-    void set_Nombre(string);
-    void set_Id_o_edad(int);
+public:
+    //constructor vacio
+    Personas(){};
+    Personas(string nom, bool cov): nombre(nom), covid(cov){};
+
+    //accesor methods
+    string get_nombre();
+    bool get_covid();
+    void set_nombre(string);
+
 
 };
-
-General::General(string nom, int ie) {
-    nombre = nom;
-    id_o_edad = ie;
-}
-void General :: confirmacion() {
-    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Id: " << id_o_edad << endl;
-}
-bool General ::covid() {
-    cout << "¿Has estado en contacto con alguien con Covid en "
-            "los ultimos 14 dias?  si/no" << endl;
-    cin >> cov;
-    if(cov == "no" or cov == "No"){
-        cout << "Acceso permitido" << endl <<"\n";
-        return true;
-
-    }
-    else if (cov == "si" or cov == "Si"){
-        cout << "Acceso denegado" << endl;
-        cout << "No tienes permitido el acceso\n" <<endl;
-        return false;
-    }
-}
-string General ::get_Nombre() {
+//metodos
+string Personas::get_nombre() {
     return nombre;
 }
-int General ::get_Id_o_edad() {
-    return id_o_edad;
+bool Personas::get_covid() {
+    return covid;
 }
-void General ::set_Nombre(string nom) {
+void Personas::set_nombre(string nom) {
     nombre = nom;
 }
-void General ::set_Id_o_edad(int ie) {
-    id_o_edad = ie;
-}
 
 
 
 
-//Primera clase Jugador que hereda de General
-class Jugador: public General{
+//subclase jugador
 
+class Jugador: public Personas{
 private:
-//Atributos heredados
-
+    int id;
 public:
-//Constructores
-    Jugador(): General(){};//Default
-    Jugador(string nombre, int id_o_edad);
+    Jugador(){};
+    Jugador(string nombre, int id, bool covid);
 
-//Metodos heredados
+    //metodos
+    int get_id();
+    void set_id(int);
+
 
 };
-Jugador::Jugador(string nom, int ie) {
+Jugador::Jugador(string nom, int _id, bool co) {
     nombre = nom;
-    id_o_edad = ie;
+    id = _id;
+    covid = co;
+}
+int Jugador::get_id() {
+    return id;
+}
+void Jugador::set_id(int _id) {
+    id = _id;
 }
 
 
 
-
-
-
-//Segunda clase Publico que hereda de General
-class Publico : public General{
-
+//subclase Publico
+class Publico: public Personas{
 private:
-//Atributos heredados
-
+    int edad;
 public:
-//Constructores
-    Publico(): General(){}; //Default
-    Publico(string nombre, int id_o_edad);
+    Publico(){};
+    Publico(string nombre, int edad, bool covid);
 
-//Metodos
+    //metodos
+    int get_edad();
+    void set_edad(int);
     int precio();
-    void confirmacion(); //sobrescritura
-
 
 };
-Publico::Publico(string nom, int ie) {
+Publico::Publico(string nom, int ed, bool co) {
     nombre = nom;
-    id_o_edad = ie;
+    edad = ed;
+    covid = co;
 }
-void Publico :: confirmacion() {
-    cout << "Estos son sus datos:\nNombre: " << nombre << "\n" << "Edad: " << id_o_edad << endl;
+int Publico::get_edad() {
+    return edad;
 }
-
+void Publico::set_edad(int ed) {
+    edad = ed;
+}
 int Publico ::precio(){
-    if (id_o_edad > 14){
+    if (edad > 14){
         return 30;
     }
     else{
@@ -128,48 +106,45 @@ int Publico ::precio(){
 
 
 
-
-
-
-// Tercera clase Staff que hereda de General
-class Staff: public General{
-
+//sub clase staff
+class Staff: public Personas{
 private:
-//Atributos
     string area;
+    float horas;
 
 public:
-//Constructores
-    Staff(): General(), area(""){}; //Default
-    Staff(string nombre, string area, int id_o_edad);
+    Staff(){};
+    Staff(string nombre, string area, float horas, bool covid);
+    string get_area();
+    float get_horas();
 
-//Metodos
-    void confirmacion(); //sobreescritura
-    string get_Area();
-    void set_Area(string);
+    void set_area(string);
+    void set_horas(float);
 
+    void agregarhoras(float);
 
 };
-Staff::Staff(string nom, string are, int ie) {
+Staff::Staff(string nom, string ar, float hor, bool co) {
     nombre = nom;
-    area = are;
-    id_o_edad = ie;
+    area = ar;
+    horas = hor;
+    covid = co;
 }
-
-string Staff ::get_Area() {
+string Staff::get_area() {
     return area;
 }
-void Staff ::set_Area(string _area)  {
-    area = _area;
+float Staff::get_horas() {
+    return horas;
 }
-void Staff :: confirmacion() {
-    cout << "Estos son sus datos:\nNombre: " << nombre << "\nId: " << id_o_edad << "\nArea: " << area <<endl;
+void Staff::set_area(string ar) {
+    area = ar;
+}
+void Staff::set_horas(float hor) {
+    horas = hor;
+}
+void Staff::agregarhoras(float hor) {
+    horas = horas + hor;
 }
 
 
-
-
-#endif //PROYECTO_PERSONAS_H
-
-
-
+#endif //PROYECTOFINAL_PERSONAS_H
