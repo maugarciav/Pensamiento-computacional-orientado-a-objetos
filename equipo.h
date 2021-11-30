@@ -1,23 +1,33 @@
-//
-// Created by Mauricio Garcia on 27/11/21.
-//
+/*
+ * Proyecto Toreno ABE
+ * Created by Mauricio Garcia
+ * A01704098
+ */
+
+/*
+ * Descripcion: Se encuentra la clase equipo y sus metodos
+ * de manejo
+*/
+
 
 #ifndef PROYECTOFINAL_EQUIPO_H
 #define PROYECTOFINAL_EQUIPO_H
 #include <string>
-#include "personas.h"
 #include <iostream>
 
 using namespace std;
 
+//Se crea la clase Equipo
 class Equipo{
 private:
+    //Declaracion de atributos
     string nombre;
     string coach;
     int ranking;
 
-    int iequipo = 0;
+
 public:
+    //Constructores
     Equipo(){};
     Equipo(string nom, string coa, int rank): nombre(nom), coach(coa), ranking(rank){};
 
@@ -33,23 +43,23 @@ public:
 
 
 };
-void Equipo::set_nombre(string nom) {
+void Equipo::set_nombre(string nom) { //setter nombre
     nombre = nom;
 }
-void Equipo::set_coach(string coa) {
+void Equipo::set_coach(string coa) { // setter coach
     coach = coa;
 }
-void Equipo::set_ranking(int rank) {
+void Equipo::set_ranking(int rank) { //setter ranking
     ranking = rank;
 }
 
-string Equipo::get_nombre() {
+string Equipo::get_nombre() { //getter nombre
     return nombre;
 }
-string Equipo::get_coach() {
+string Equipo::get_coach() { //getter coach
     return coach;
 }
-int Equipo::get_ranking() {
+int Equipo::get_ranking() { // getter ranking
     return ranking;
 }
 
