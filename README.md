@@ -18,8 +18,9 @@ El programa corre en la consola y esta hecho con el lenjuage c++ y corre en los 
 
 -------------------------------------------------------------------------------------------------------------------------------
 ### CORRECIONES
-###-Comente el codigo, competencia: SICT0401A
-###-Añadir datos a todas las clases y al diagrama , competencia : SICT0401A
+-Comente el codigo, competencia: SICT0401A
+
+-Añadir datos a todas las clases y al diagrama , competencia : SICT0401A
 
 
 
