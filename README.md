@@ -17,4 +17,11 @@ El programa lleva un registro de todas las personas que entran a las intalacione
 El programa corre en la consola y esta hecho con el lenjuage c++ y corre en los IDES que acepten dicho lenguaje.
 
 -------------------------------------------------------------------------------------------------------------------------------
+### CORRECIONES
+-Comente el codigo, competencia: SICT0401A
+-Añadir datos a todas las clases y al diagrama , competencia : SICT0401A
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
 GRACIAS.
