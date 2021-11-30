@@ -1,18 +1,26 @@
 /*
  * Proyecto Torneo ABE
- * Mauricio Garcia Villanueva
+ * Created by Mauricio Garcia
  * A01704098
  */
 
+/*
+ * Descripcion: este es un proyecto demo para la clase de Pensamiento
+ * Computacional Orientado a Objetos, el programa lleva un registro
+ * de las personas de el tipo de personas que entran a las intalaciones
+ * para un torneo.
+*/
 
+//Bibliotecas
 #include <iostream>
-#include "Torneo.h"
+#include "Torneo.h" //Donde se crean los objetos
 
 using namespace std;
 
-
+//Procedimiento menu
 void menu() {
 
+    //Opciones del menu
     cout << "Menu:\n";
     cout << "1. Registrar Jugador \n";
     cout << "2. Registrar Publico \n";
@@ -33,6 +41,7 @@ void menu() {
 }
 
 int main(){
+    //Creo las listas vacias para guardar los diferentes objetos
     Torneo j1;
     Torneo p1;
     Torneo s1;
@@ -43,13 +52,16 @@ int main(){
     int id, edad, ranking;
     float horas;
     bool continua = true;
-
+//un ciclo para que siempre tenga una opcion a menos que la opcion sea salir
     while (continua == true) {
         cout << endl;
+        //imprime el menu
         menu();
         cout << endl << "Opcion: ";
-        cin >> opcion;
+        cin >> opcion; // pide la opcion
 
+
+        //Opcion 1, registrar a un jugador
         if(opcion == 1){
             cout << "Nombre: ";
             cin >> nom;
@@ -69,6 +81,8 @@ int main(){
             }
 
         }
+
+        //opcion 2 registrar al publico
         else if(opcion == 2){
             cout << "Nombre: ";
             cin >> nom;
@@ -87,6 +101,8 @@ int main(){
             }
 
         }
+
+        //opcion 3 registrar a alguien de staff
         else if(opcion == 3){
             cout << "Nombre: ";
             cin >> nom;
@@ -106,6 +122,8 @@ int main(){
                 cout << "Acceso Permitido" << endl;
             }
         }
+
+        //opcion 4 registrar a un equipo
         else if(opcion == 4){
             cout << "Nombre: ";
             cin >> nom;
@@ -115,33 +133,49 @@ int main(){
             cin >> ranking;
             e1.registrar_equipo(nom, coach, ranking);
         }
+
+        // opcion 5 ver la lista de los jugadores registrados
         else if(opcion == 5){
             j1.ver_jugadores();
         }
+
+        //opcion 6 ver la lista de publico que fue registrado
         else if(opcion == 6){
             p1.ver_publico();
         }
+
+        //opcion 7 ver la lista de el staff registrado
         else if(opcion == 7){
             s1.ver_staff();
         }
+
+        //opcion 8 ver la lista de los equipos registrados
         else if(opcion == 8){
             e1.ver_equipos();
         }
+
+        // opcion 9 buscar a un jugador
         else if(opcion == 9){
             cout << "Nombre del Jugador: ";
             cin >> nom;
             j1.buscar_jugador(nom);
         }
+
+        //opcion 10 buscar a alguien en el publico
         else if(opcion == 10){
             cout << "Nombre de la Persona: ";
             cin >> nom;
             p1.buscar_publico(nom);
         }
+
+        //opcion 11 buscar a alguein del staff
         else if(opcion == 11){
             cout << "Nombre de Staff: ";
             cin >> nom;
             s1.buscar_staff(nom);
         }
+
+        //opcion 12 cambiar el ranking de un equipo
         else if(opcion == 12){
             cout << "Equipo: ";
             cin >> nom;
@@ -149,6 +183,8 @@ int main(){
             cin >> ranking;
             e1.actualizar_ranking(nom, ranking);
         }
+
+        // opcion 13 agregar horas trabajadas al staff
         else if(opcion == 13){
             cout << "Nombre: ";
             cin >> nom;
@@ -156,16 +192,21 @@ int main(){
             cin >> horas;
             s1.agregar_horas(nom, horas);
         }
+
+        //opcion 14 ver las horas trabajadas de alguien del staff
         else if (opcion == 14){
             cout << "Nombre de Staff: ";
             cin >> nom;
             s1.ver_horas(nom);
         }
+
+        //opcion 15 salir, acaba el ciclo
         else if (opcion == 15){
             continua = false;
             cout << "Adios" << endl;
 
         }
+        // valida opciones incorrectas
         else{
             cout << "Opcion invalida";
         }
