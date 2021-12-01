@@ -1,13 +1,18 @@
 /*
+ *
+ * TC1033 Pensamiento Computacional Orientado a Objetos
  * Proyecto Torneo ABE
- * Created by Mauricio Garcia
+ * Mauricio Garcia Villanueva
  * A01704098
+ *
  */
 
+
 /*
- * Descripcion: Contiene los metodos para el manejo de las personas
- * se encuentra la clase padre Personas la cual tiene 3 hijos, jugadores,
- * publico y staff
+ * Descripcion: Contiene los metodos genéricos para el manejo de
+ * las personas se encuentra la clase padre Personas la cual tiene
+ * 3 clases hijos, Jugador, Publico y Staff.
+ *
 */
 
 
@@ -18,97 +23,184 @@
 
 using namespace std;
 
-//clase padre
+//Declaracion de clase Personas que es abstracta
 class Personas{
 protected:
+    //Declaro variables de instancia
     string nombre;
-    bool covid; //no hay setters de covid porque este atributo no se puede modificar una vez ingresado
+    bool covid;
 
 public:
-    //constructores
+    //Declaro los métodos que va a tener el objeto
     Personas(){};
-    Personas(string nom, bool cov): nombre(nom), covid(cov){};
+    Personas(string nombre, bool covid);
 
-    //accesor methods
+
     string get_nombre();
     bool get_covid();
     void set_nombre(string);
 
 
 };
-//metodos
-string Personas::get_nombre() { //getter nombre
+
+/*
+ * Constructor donde recibe valores para llenar las variables de instancia
+ *
+ * @param int nom: el nombre de la persona, bool cov: estatus covid
+ * @return
+*/
+Personas::Personas(string nom, bool cov) {
+    nombre = nom;
+    covid = cov;
+}
+
+
+/*
+ * getter nombre
+ *
+ * @param
+ * @return string : nombre de la persona
+*/
+string Personas::get_nombre() {
     return nombre;
 }
-bool Personas::get_covid() { //getter covid
+
+
+/*
+ * getter covid
+ *
+ * @param
+ * @return bool: estado de la persona
+*/
+bool Personas::get_covid() {
     return covid;
 }
-void Personas::set_nombre(string nom) { //setter nombre
+
+
+/*
+ * setter nombre
+ *
+ * @param string nom : nombre de la persona
+ * @return
+*/
+void Personas::set_nombre(string nom) {
     nombre = nom;
 }
 
 
 
 
-//subclase Jugador, hija de Personas
-
+//Declaro objeto Jugador que hereda de Personas
 class Jugador: public Personas{
 private:
-    //atributo propio
+    //Variables de instancia del objeto
     int id;
 public:
-    //constructores
+    //Metodos del objeto
     Jugador(){};
     Jugador(string nombre, int id, bool covid);
 
-    //metodos
+
     int get_id();
     void set_id(int);
 
-
 };
-Jugador::Jugador(string nom, int _id, bool co) { //constructor
+
+
+/*
+ * Constructor que recibe nombre, id y covid
+ *
+ * @param string nom: nombre del Jugador, int _id: id, bool co: covid
+ * @return Objeto Jugador
+*/
+Jugador::Jugador(string nom, int _id, bool co) {
     nombre = nom;
     id = _id;
     covid = co;
 }
-int Jugador::get_id() { //getter id
+
+
+/*
+ * getter id
+ *
+ * @param
+ * @return int: id del Juagdor
+*/
+int Jugador::get_id() {
     return id;
 }
-void Jugador::set_id(int _id) { //setter id
+
+/*
+ * setter id
+ *
+ * @param int: _id
+ * @return
+*/
+void Jugador::set_id(int _id) {
     id = _id;
 }
 
 
 
-//subclase Publico, hijo 2 de Personas
+//Declaro objeto Publico que hereda de Personas
 class Publico: public Personas{
 private:
-    //atributo propio
+    //Declaro las variables de instancia
     int edad;
 public:
-    //constructores
+    //Metodos del objeto
     Publico(){};
     Publico(string nombre, int edad, bool covid);
 
-    //metodos
+
     int get_edad();
     void set_edad(int);
     int precio();
 
 };
-Publico::Publico(string nom, int ed, bool co) { //constructor
+
+/*
+ * Constructor que recibe nombre, edad y covid
+ *
+ * @param string nom: nombre del Publico, int edad: edad,
+ *        bool co: estado del Publico
+ * @return Objeto Publico
+*/
+Publico::Publico(string nom, int ed, bool co) {
     nombre = nom;
     edad = ed;
     covid = co;
 }
-int Publico::get_edad() { //getter edad
+
+
+/*
+ * getter edad
+ *
+ * @param
+ * @return int: edad del Publico
+*/
+int Publico::get_edad() {
     return edad;
 }
-void Publico::set_edad(int ed) { //setter edad
+
+/*
+ * setter id
+ *
+ * @param int:ed
+ * @return
+*/
+void Publico::set_edad(int ed) {
     edad = ed;
 }
-int Publico ::precio(){ //metodo que regresa el precio que se cobrara segun la edad
+
+/*
+ * Metodo que calcula el precio por la entrada
+ * en base a la edad del Publico
+ *
+ * @param
+ * @return int: precio
+*/
+int Publico ::precio(){
     if (edad > 14){
         return 30;
     }
@@ -119,19 +211,19 @@ int Publico ::precio(){ //metodo que regresa el precio que se cobrara segun la e
 
 
 
-//sub clase staff, hija 3 de Personas
+//Declaro el objeto Staff que hereda de Personas
 class Staff: public Personas{
 private:
-    //atributos propios
+    //Variables de instancia del objeto
     string area;
     float horas;
 
 public:
-    //constructores
+    //Metodos del objeto
     Staff(){};
     Staff(string nombre, string area, float horas, bool covid);
 
-    //metodos
+
     string get_area();
     float get_horas();
 
@@ -141,27 +233,75 @@ public:
     void agregarhoras(float);
 
 };
-Staff::Staff(string nom, string ar, float hor, bool co) { //constructor
+
+/*
+ * Constructor que recibe nombre, area, horas y co
+ *
+ * @param string nom: nombre del Staff, string area: area donde
+ *         trabaja, float horas: horas trabajadas, bool co: estado
+ * @return Objeto Staff
+*/
+Staff::Staff(string nom, string ar, float hor, bool co) {
     nombre = nom;
     area = ar;
     horas = hor;
     covid = co;
 }
-string Staff::get_area() { //getter area
+
+
+/*
+ * getter area
+ *
+ * @param
+ * @return string: area del Staff
+*/
+string Staff::get_area() {
     return area;
 }
-float Staff::get_horas() { //getter horas
+
+/*
+ * getter horas
+ *
+ * @param
+ * @return float: horas del Staff
+*/
+float Staff::get_horas() {
     return horas;
 }
-void Staff::set_area(string ar) { //setter area
+
+
+/*
+ * setter area
+ *
+ * @param string: area del Staff
+ * @return
+*/
+void Staff::set_area(string ar) {
     area = ar;
 }
-void Staff::set_horas(float hor) { //setter horas
+
+/*
+ * setter horas
+ *
+ * @param float: horas trabajadas del Staff
+ * @return
+*/
+void Staff::set_horas(float hor) {
     horas = hor;
 }
-void Staff::agregarhoras(float hor) { //metodo que suma las horas trabajadas mas las nuevas horas
+
+/*
+ * Metodo que suma las horas ya acomuladas
+ * mas horas nuevas trabajadas
+ *
+ * @param
+ * @return int: edad del Publico
+*/
+void Staff::agregarhoras(float hor) {
     horas = horas + hor;
 }
+
+
 
 
 #endif //PROYECTOFINAL_PERSONAS_H
