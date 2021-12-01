@@ -103,7 +103,7 @@ string Equipo::get_coach() {
 
 
 /*
- * getter id
+ * getter ranking
  *
  * @param
  * @return int: ranking del equipo
