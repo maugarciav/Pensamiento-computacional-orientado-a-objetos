@@ -1,11 +1,15 @@
 /*
- * Proyecto Toreno ABE
- * Created by Mauricio Garcia
+ *
+ * TC1033 Pensamiento Computacional Orientado a Objetos
+ * Proyecto Torneo ABE
+ * Mauricio Garcia Villanueva
  * A01704098
+ *
  */
 
+
 /*
- * Descripcion: Se encuentra la clase equipo y sus metodos
+ * Descripcion: Se encuentra la clase Equipo y sus metodos
  * de manejo
 */
 
@@ -17,21 +21,21 @@
 
 using namespace std;
 
-//Se crea la clase Equipo
+//Declaracion de clase Equipo
 class Equipo{
 private:
-    //Declaracion de atributos
+    //Declaro variables de instancia
     string nombre;
     string coach;
     int ranking;
 
 
 public:
-    //Constructores
+    //Declaro los métodos que va a tener el objeto
     Equipo(){};
     Equipo(string nom, string coa, int rank): nombre(nom), coach(coa), ranking(rank){};
 
-    //metodos
+
     void set_nombre(string);
     void set_coach(string);
     void set_ranking(int);
@@ -40,26 +44,71 @@ public:
     string get_coach();
     int get_ranking();
 
-
-
 };
-void Equipo::set_nombre(string nom) { //setter nombre
+
+
+/*
+ * setter nombre
+ *
+ * @param string: nombre del equipo
+ * @return
+*/
+void Equipo::set_nombre(string nom) {
     nombre = nom;
 }
-void Equipo::set_coach(string coa) { // setter coach
+
+/*
+ * setter coach
+ *
+ * @param string: nombre del coach
+ * @return
+*/
+void Equipo::set_coach(string coa) {
     coach = coa;
 }
-void Equipo::set_ranking(int rank) { //setter ranking
+
+/*
+ * setter ranking
+ *
+ * @param int: ranking del equipo
+ * @return
+*/
+void Equipo::set_ranking(int rank) {
     ranking = rank;
 }
 
-string Equipo::get_nombre() { //getter nombre
+
+
+/*
+ * getter nombre
+ *
+ * @param
+ * @return string: nombre del equipo
+*/
+string Equipo::get_nombre() {
     return nombre;
 }
-string Equipo::get_coach() { //getter coach
+
+
+/*
+ * getter coach
+ *
+ * @param
+ * @return strong: nombre del coach
+*/
+string Equipo::get_coach() {
     return coach;
 }
-int Equipo::get_ranking() { // getter ranking
+
+
+
+/*
+ * getter id
+ *
+ * @param
+ * @return int: ranking del equipo
+*/
+int Equipo::get_ranking() {
     return ranking;
 }
 
